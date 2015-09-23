@@ -53,7 +53,7 @@ for link in movies:
   htmlIMDB = requests.get(link).text
   rootIMDB = lxml.html.fromstring(htmlIMDB)
   keywords = ', '.join(word.text_content().strip()for word in rootIMDB.cssselect("span[itemprop='keywords']"))
-  imdb_rating = float(rating) for rating in rootIMDB.cssselect("span[itemprop="ratingValue']").text_content()
+  imdb_rating = rootIMDB.cssselect("span[itemprop="ratingValue']")[0].text_content()
   break
   imdb_votes = 
   try:
